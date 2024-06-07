@@ -1,7 +1,26 @@
 'use client';
+import  { useState } from 'react';
 import Image from 'next/image';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 const FarmerLogin: React.FC = () => {
+  
+  const [useOtp, setUseOtp] = useState(false);
+  const [otpGenerated, setOtpGenerated] = useState(false);
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add login logic here
+  };
+
+  const handleOtpLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Add OTP login logic here
+  };
+
+  const generateOtp = () => {
+    setOtpGenerated(true);
+    // Add logic to generate OTP here
+  };
   return (
     <>
     <div className="bg-white dark:bg-gray-900">
@@ -36,29 +55,97 @@ const FarmerLogin: React.FC = () => {
             </div>
 
             <div className="mt-6">
-              <form>
-                <div className='m-2'>
-                  <label htmlFor="phone" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Phone Number</label>
-                  <input type="tel" name="phone" id="phone" placeholder="Phone Number" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                </div>
-                <div className='m-2'>
-                  <label htmlFor="password" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">Password</label>
-                  <input type="password" name="password" id="password" placeholder="Password" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
-                </div>
-
-                <div className="mt-6 mx-2">
-                  <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                    Sign in
-                  </button>
-                </div>
-              </form>
-              <p className="mt-4 justify-center text-center text-gray-600 dark:text-gray-400">or</p>
-                <div className="mt-6 mx-2">
-                <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                  Sign in with OTP
-                </button>
+            {useOtp ? (
+          <form onSubmit={handleOtpLogin}>
+            <div className="m-2">
+              <label htmlFor="phone" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="Phone Number"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                required
+              />
+            </div>
+            {otpGenerated && (
+              <div className="m-2">
+                <label htmlFor="otp" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                  OTP
+                </label>
+                <input
+                  type="text"
+                  name="otp"
+                  id="otp"
+                  placeholder="Enter OTP"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                  required
+                />
               </div>
-              <p className="mt-6 text-sm text-center text-gray-400">Don't have an account yet? <a href="#" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
+            )}
+            <div className="mt-6 mx-2">
+              {otpGenerated ? (
+                <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                  Login
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={generateOtp}
+                  className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                >
+                  Generate OTP
+                </button>
+              )}
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={handleLogin}>
+            <div className="m-2">
+              <label htmlFor="phone" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="Phone Number"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                required
+              />
+            </div>
+            <div className="m-2">
+              <label htmlFor="password" className="block mb-2 text-sm text-gray-600 dark:text-gray-200">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
+                required
+              />
+            </div>
+            <div className="mt-6 mx-2">
+              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                Sign in
+              </button>
+            </div>
+          </form>
+        )}
+        <p className="mt-4 justify-center text-center text-gray-600 dark:text-gray-400">or</p>
+        <div className="mt-6 mx-2">
+          <button
+            onClick={() => setUseOtp(!useOtp)}
+            className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+          >
+            {useOtp ? 'Back to Sign In' : 'Sign in with OTP'}
+          </button>
+        </div>
+              <p className="mt-6 text-sm text-center text-gray-400">Don't have an account yet? <a href="./farmer-signup" className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</a>.</p>
             </div>
           </div>
         </div>
