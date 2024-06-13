@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Mininavbar from '../components/Mininavbar.tsx';
+import Footer from '../components/Footer.tsx';
 const Login: React.FC = () => {
     const router = useRouter();
 
@@ -16,7 +17,7 @@ const Login: React.FC = () => {
     return (
         <>
         <Mininavbar/>
-        <div className="min-h-screen  bg-gray-900 text-zinc-100 flex flex-col justify-center items-center p-4">
+        <div className="min-h-screen  bg-white text-black flex flex-col justify-center items-center p-4">
             
             <div className="flex justify-center items-center mb-3">
                 <Image
@@ -25,7 +26,7 @@ const Login: React.FC = () => {
                     alt="Logo"
                     width={100}
                     height={30}
-                    style={{ filter: 'invert(100%)' }}
+                    
                 />
                 <div className="text-3xl mx-3">
                 FARMCONNECT
@@ -34,10 +35,10 @@ const Login: React.FC = () => {
             <div className="text-center  flex items-center justify-around">
                 <div className='md:max-sm:flex-col'>
                     <div>
-                <h1 className="mt-4 text-gray-600 dark:text-gray-400 font-extrabold font-serif md:text-lg">
+                <h1 className="mt-4 text-gray-700 dark:text-gray-700 font-extrabold font-serif md:text-lg">
                     Welcome back
                 </h1>
-                <h1 className="mt-4 text-2xl font-medium text-white font-serif capitalize lg:text-3xl dark:text-white">
+                <h1 className="mt-4 text-2xl font-medium text-gray-800 font-serif capitalize lg:text-3xl dark:text-gray-800">
                     Choose your account type
                 </h1>
                 </div>
@@ -48,7 +49,7 @@ const Login: React.FC = () => {
                         src="/farmer.png"
                         alt="Button 1"
                         className="w-32 h-32 object-cover hover:opacity-80 transition-opacity"
-                        style={{ filter: 'invert(100%)' }}
+                        
                         />
                         <h1 className="text-2xl mt-3">FARMER</h1>
                     </button>
@@ -57,7 +58,7 @@ const Login: React.FC = () => {
                         src="/customer.png"
                         alt="Button 2"
                         className="w-32 h-32 object-cover hover:opacity-80 transition-opacity"
-                        style={{ filter: 'invert(100%)' }}
+                        
                         />
                         <h1 className="text-2xl mt-3">CUSTOMER</h1>
                     </button>
@@ -65,7 +66,8 @@ const Login: React.FC = () => {
                 </div>
                 </div>
             </div>
-        </div>  
+        </div> 
+        <Footer/> 
         </>      
     );
 };

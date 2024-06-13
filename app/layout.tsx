@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "FarmConnect App",
-  description: "FarmConnect app",
+  description: "FarmConnect app", 
 };
 
 export default function RootLayout({

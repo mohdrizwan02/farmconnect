@@ -1,11 +1,53 @@
-import React from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import Image from 'next/image';
-const Mininavbar: React.FC = () => {
+import Link from 'next/link';
+
+const Mininavbar = () => {
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setNav(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <header className="text-white bg-black body-font">
-      <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
-        <div className="flex justify-between items-center w-full md:w-auto mb-4 md:mb-0">
-          <a className="flex title-font font-medium items-center text-gray-900" href="#">
+    <div className='flex justify-between sticky top-0 z-50 items-center h-24 mx-auto px-4 text-white bg-black'>
+      <a className="flex title-font font-medium items-center text-gray-900" href="#">
+        <Image
+          className="w-auto h-10"
+          src="/logo.png"
+          alt="Logo"
+          width={100}
+          height={30}
+          style={{ filter: 'invert(100%)' }}
+        />
+        <span className="ml-3 text-xl text-white">FARM CONNECT</span>
+      </a>
+      <ul className='hidden md:flex'>
+        <li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Home</li>
+        <li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>About</li>
+        <li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Services</li>
+        <Link href='./contact-us'><li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Contact</li></Link>
+      </ul>
+      <div onClick={handleNav} className='block md:hidden'>
+        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+      </div>
+      <ul className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 z-50 flex flex-col justify-between' : 'ease-in-out duration-500 fixed left-[-100%]'}>
+        <div>
+          <a className="flex title-font font-medium items-center text-gray-900 mt-2" href="#">
             <Image
               className="w-auto h-10"
               src="/logo.png"
@@ -16,33 +58,14 @@ const Mininavbar: React.FC = () => {
             />
             <span className="ml-3 text-xl text-white">FARM CONNECT</span>
           </a>
-          <div className="flex items-center space-x-5 md:hidden">
-            <a className="text-xl hover:text-gray-300 hover:underline cursor-pointer" href="./register">Register</a>
-            <a href="./login">
-              <button className="inline-flex items-center bg-white border-2 py-1 px-4 focus:outline-none hover:bg-gray-400 rounded text-black text-base">
-                Login
-              </button>
-            </a>
-          </div>
+          <a href='/'><li className='p-4 border-b hover:cursor-pointer border-gray-600'>Home</li></a>
+          <a href=''><li className='p-4 border-b hover:cursor-pointer border-gray-600'>About</li></a>
+          <a href=''><li className='p-4 border-b hover:cursor-pointer border-gray-600'>Services</li></a>
+          <a href='./contact-us'><li className='p-4 border-b hover:cursor-pointer border-gray-600'>Contact</li></a>
         </div>
-        <nav className="flex flex-wrap items-center text-base justify-center w-full md:w-auto md:flex-grow">
-          <a className="hover:text-gray-300 cursor-pointer mx-3">Home</a>
-          <a className="hover:text-gray-300 cursor-pointer mx-3">About Us</a>
-          <a className="hover:text-gray-300 cursor-pointer mx-3">Contact</a>
-        </nav>
-        <div className="hidden md:flex items-center space-x-5">
-          <a className="text-xl hover:text-gray-300 hover:underline cursor-pointer" href="./register">Register</a>
-          <a href="./login">
-            <button className="inline-flex items-center bg-white border-2 py-1 px-4 focus:outline-none hover:bg-gray-400 rounded text-black text-base">
-              Login
-            </button>
-          </a>
-        </div>
-      </div>
-    </header>
-  
-
+        
+      </ul>
+    </div>
   );
 };
-
 export default Mininavbar;

@@ -1,16 +1,26 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import Mininavbar from '../components/Mininavbar.tsx';
-import Otpsignup from '../components/Otpsignup.tsx';
+import OTPVerification from '../components/OTPVerification.tsx';
+import Signup from '../components/Signup.tsx';
+
 const Register: React.FC = () => {
-  
-    return (
-        <>
-          <Mininavbar/>
-          <Otpsignup/> 
-        </>
-    );
-}
+  const [isOtpVerified, setIsOtpVerified] = useState(false);
+
+  const handleOtpVerification = () => {
+    setIsOtpVerified(true);
+  };
+
+  return (
+    <>
+      <Mininavbar />
+      {!isOtpVerified ? (
+        <OTPVerification onOtpVerified={handleOtpVerification} />
+      ) : (
+        <Signup />
+      )}
+    </>
+  );
+};
+
 export default Register;
