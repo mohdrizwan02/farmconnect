@@ -39,7 +39,7 @@ const Header = () => {
       <ul className='hidden md:flex'>
         <li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Home</li>
         <Link href='./about-us'><li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>About</li></Link>
-        <li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Services</li>
+        <Link href='./services'><li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Services</li></Link>
         <Link href='./contact-us'><li className='p-4 hover:cursor-pointer hover:text-gray-500 hover:underline'>Contact</li></Link>
       </ul>
       <div onClick={handleNav} className='block md:hidden'>

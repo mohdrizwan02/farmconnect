@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import '../styles/custom.css';
+
 export default function Home() {
   return (
     <>     <section className="header-section">
