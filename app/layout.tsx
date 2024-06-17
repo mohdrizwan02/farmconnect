@@ -24,7 +24,7 @@ export default function RootLayout({
         <title>FarmConnect App</title>
       </head>
       <body className={inter.className}>
-        <LoginSignupheader />
+        
         <Header />
         {children}
         <Footer />

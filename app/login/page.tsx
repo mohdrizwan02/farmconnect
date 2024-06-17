@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import Footer from '../components/Footer.tsx';
 import Header from '../components/Header.tsx';
+import LoginSignupheader from '../components/LoginSignupheader.tsx';
 const Login: React.FC = () => {
     const router = useRouter();
 
@@ -17,9 +18,8 @@ const Login: React.FC = () => {
     };
     return (
         <>
-       
+        <LoginSignupheader/>
         <div className="    bg-white text-black flex flex-col justify-center items-center py-16 p-4">
-            
             <div className="flex justify-center items-center mb-3">
                 <Image
                     className="w-auto h-16 sm:h-16"
@@ -70,6 +70,8 @@ const Login: React.FC = () => {
         </div> 
         
         </>      
+       
+            
     );
 };
 

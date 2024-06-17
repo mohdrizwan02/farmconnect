@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '../components/Header';
+import LoginSignupheader from '../components/LoginSignupheader';
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -28,7 +29,8 @@ export default function ContactUs() {
   };
 
   return (
-    <>
+    <> 
+        <LoginSignupheader />
          <div className="min-h-screen bg-gray-100 flex flex-col items-center px-4 py-6">
             <div className="grid grid-cols-1 w-full md:grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-8">
                 <div className="h-32 rounded-lg bg-black pl-4 sm:px-4 flex-row items-center text-white">
