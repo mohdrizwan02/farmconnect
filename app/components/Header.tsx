@@ -69,7 +69,7 @@ const Header = () => {
       </div>
       <ul ref={navRef} className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 z-50 flex flex-col justify-between' : 'ease-in-out duration-500 fixed left-[-100%]'}>
         <div>
-          <a className="flex title-font font-medium items-center text-gray-900 mt-2" href="#">
+          <a className="flex title-font font-medium items-center text-gray-900 mt-2" href="./home">
             <Image
               className="w-auto h-10"
               src="/logo.png"

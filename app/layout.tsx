@@ -24,11 +24,14 @@ export default function RootLayout({
         <title>FarmConnect App</title>
       </head>
       <body className={inter.className}>
-        
-        <Header />
+      <Header />
         {children}
-        <Footer />
+      <Footer />
       </body>
     </html>
   );
 }
+        
+        
+        
+       
