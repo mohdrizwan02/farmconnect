@@ -1,13 +1,13 @@
 import React from 'react';
-
+import Link from 'next/link';
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-black space-y-8 p-6  justify-center ">
+    <footer className="flex flex-col  bg-black space-y-8 p-6  justify-center ">
       <nav className="flex justify-center flex-wrap gap-6 text-gray-500 font-medium">
-        <a className="hover:text-gray-400 text-white hover:underline" href="./">Home</a>
-        <a className="hover:text-gray-400 text-white hover:underline"  href="/about-us">About</a>
-        <a className="hover:text-gray-400 text-white hover:underline" href="#">Services</a>
-        <a className="hover:text-gray-400 text-white hover:underline" href="./contact-us">Contact</a>
+        <Link href='/'className="hover:text-gray-400 text-white hover:underline" >Home</Link>
+        <Link href='/about-us'className="hover:text-gray-400 text-white hover:underline"  >About</Link>
+        <Link href='/services'className="hover:text-gray-400 text-white hover:underline" >Services</Link>
+        <Link href='/contact-us'className="hover:text-gray-400 text-white hover:underline" >Contact</Link>
       </nav>
 
       <div className="flex justify-center space-x-5">
@@ -15,7 +15,7 @@ const Footer = () => {
           <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" alt="Facebook" />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" alt="LinkedIn" />
+          <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" alt="linkedIn" />
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
           <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" alt="Instagram" />

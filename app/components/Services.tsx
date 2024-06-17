@@ -17,12 +17,10 @@ const Services: React.FC = () => {
                 </h1></span>
       <span className="h-px flex-1 bg-black"></span>
     </span>
-   
-
     <div className=' flex justify-center'>
       <div className="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
-          <div className="mx-auto max-w-lg text-center lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
+          <div className="mx-auto max-w-lg  lg:mx-0 ltr:lg:text-left rtl:lg:text-right">
             <h2 className="text-3xl font-bold sm:text-4xl">Empowering Farmers with Direct Market Access</h2>
 
             <p className="mt-4 text-gray-600">
@@ -31,7 +29,7 @@ const Services: React.FC = () => {
 
             <a
               href="./services"
-              className="mt-8 inline-block rounded bg-black px-12 py-3 text-sm font-medium text-white transition hover:bg-green-600 focus:outline-none focus:ring focus:ring-yellow-400"
+              className="mt-8 inline-block rounded bg-black px-12 py-3 text-sm font-medium text-white transition hover:bg-green-600 "
             >
              Learn More
             </a>
@@ -82,7 +80,7 @@ const Services: React.FC = () => {
               </p>
           </Link>
           <Link
-            href='' className="block rounded-xl border border-gray-100 p-4 shadow-sm hover:border-gray-200 hover:ring-1 hover:ring-gray-200 focus:outline-none focus:ring"
+            href='' className="block rounded-xl border border-gray-100 p-4 shadow-sm  hover:border-gray-200 hover:ring-1 hover:ring-gray-200 "
               
           >
               <span className="inline-block rounded-lg bg-gray-50 p-3">

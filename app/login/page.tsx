@@ -2,8 +2,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Mininavbar from '../components/Mininavbar.tsx';
+
 import Footer from '../components/Footer.tsx';
+import Header from '../components/Header.tsx';
 const Login: React.FC = () => {
     const router = useRouter();
 
@@ -16,8 +17,8 @@ const Login: React.FC = () => {
     };
     return (
         <>
-        <Mininavbar/>
-        <div className="min-h-screen  bg-white text-black flex flex-col justify-center items-center p-4">
+       
+        <div className="    bg-white text-black flex flex-col justify-center items-center py-16 p-4">
             
             <div className="flex justify-center items-center mb-3">
                 <Image
@@ -67,7 +68,7 @@ const Login: React.FC = () => {
                 </div>
             </div>
         </div> 
-        <Footer/> 
+        
         </>      
     );
 };

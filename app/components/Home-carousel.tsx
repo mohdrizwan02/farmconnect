@@ -76,7 +76,7 @@ const Carousel: React.FC = () => {
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center text-white">
               <h2 className="text-4xl font-bold mb-4">{image.title}</h2>
               <p className="mb-4">{image.description}</p>
-              <button className="bg-red-500 text-white py-2 px-4 rounded">{image.buttonText}</button>
+              
             </div>
           </div>
         ))}

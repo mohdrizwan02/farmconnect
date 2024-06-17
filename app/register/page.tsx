@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import Mininavbar from '../components/Mininavbar.tsx';
+
 import OTPVerification from '../components/OTPVerification.tsx';
 import Signup from '../components/Signup.tsx';
 
@@ -13,7 +13,7 @@ const Register: React.FC = () => {
 
   return (
     <>
-      <Mininavbar />
+      
       {!isOtpVerified ? (
         <OTPVerification onOtpVerified={handleOtpVerification} />
       ) : (

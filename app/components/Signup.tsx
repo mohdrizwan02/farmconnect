@@ -78,7 +78,7 @@ export default function Signup() {
                 <h3 className="text-xl font-bold mb-4">Upload Documents</h3>
                 <div className="border-dashed border-2 border-zinc-300 p-6 rounded-lg">
                   <div className="flex justify-center items-center mb-4">
-                    <label className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 cursor-pointer">
+                    <label className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-black cursor-pointer">
                       Select Documents
                       <input
                         type="file"
@@ -106,7 +106,7 @@ export default function Signup() {
                     </div>
                   )}
                   <div className="flex justify-center mt-4">
-                    <button className="bg-red-500 text-white px-4 py-2 rounded-lg">Continue</button>
+                    <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500">Continue</button>
                   </div>
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function Signup() {
                     <button
                       type="button"
                       onClick={handleContinueClick}
-                      className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                      className="bg-black text-white px-4 py-2 rounded-lg hover:bg-green-500"
                     >
                       Continue
                     </button>

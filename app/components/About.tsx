@@ -37,10 +37,10 @@ const About: React.FC = () => {
         </p>
 
         <a
-          href="#"
-          className="mt-8 inline-block rounded bg-black px-12 py-3 text-sm font-medium text-white transition hover:bg-green-600 focus:outline-none focus:ring focus:ring-yellow-400"
+          href="/about-us"
+          className="mt-8 inline-block rounded bg-black px-12 py-3 text-sm font-medium text-white transition hover:bg-green-600 "
         >
-          Learn More
+          About-Us
         </a>
       </div>
     </div>
