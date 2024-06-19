@@ -1,4 +1,4 @@
-import FarmerLogin from '../components/FarmerLogin.tsx';
+import FarmerLogin from '../../components/FarmerLogin.tsx';
 
 const FarmerLoginPage = () => {
   return (

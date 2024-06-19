@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Header from '../components/Header';
-import LoginSignupheader from '../components/LoginSignupheader';
+import Header from '../../components/Header';
+import LoginSignupheader from '../../components/LoginSignupheader';
 export default function ContactUs() {
   const [formData, setFormData] = useState({
     firstName: '',

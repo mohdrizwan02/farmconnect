@@ -3,9 +3,9 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import Footer from '../components/Footer.tsx';
-import Header from '../components/Header.tsx';
-import LoginSignupheader from '../components/LoginSignupheader.tsx';
+import Footer from '../../components/Footer.tsx';
+import Header from '../../components/Header.tsx';
+import LoginSignupheader from '../../components/LoginSignupheader.tsx';
 const Login: React.FC = () => {
     const router = useRouter();
 
@@ -56,7 +56,7 @@ const Login: React.FC = () => {
                     </button>
                     <button onClick={handleCustomerLogin} className="flex flex-col items-center">
                         <img
-                        src="/customer.png"
+                        src="/trader.png"
                         alt="Button 2"
                         className="w-32 h-32 object-cover hover:opacity-80 transition-opacity"
                         

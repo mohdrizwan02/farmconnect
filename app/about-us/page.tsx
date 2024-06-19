@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginSignupheader from '../components/LoginSignupheader'
+import LoginSignupheader from '../../components/LoginSignupheader'
 
 const About = () => {
   return (

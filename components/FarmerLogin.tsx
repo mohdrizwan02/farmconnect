@@ -4,7 +4,9 @@ import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 const FarmerLogin: React.FC = () => {
-  
+  const [phone,setphone] = useState('');
+  const [otp,setotp] = useState('');
+  const [password,setpassword]=useState('');
   const [useOtp, setUseOtp] = useState(false);
   const [otpGenerated, setOtpGenerated] = useState(false);
   const handleLogin = (e: React.FormEvent) => {
@@ -62,6 +64,7 @@ const FarmerLogin: React.FC = () => {
                 Phone Number
               </label>
               <input
+                onChange={(e)=>setphone(e.target.value)}
                 type="tel"
                 name="phone"
                 id="phone"
@@ -76,6 +79,7 @@ const FarmerLogin: React.FC = () => {
                   OTP
                 </label>
                 <input
+                  onChange={(e)=>setotp(e.target.value)}
                   type="text"
                   name="otp"
                   id="otp"
@@ -108,6 +112,7 @@ const FarmerLogin: React.FC = () => {
                 Phone Number
               </label>
               <input
+                onChange={(e)=>setphone(e.target.value)}
                 type="tel"
                 name="phone"
                 id="phone"
@@ -121,6 +126,7 @@ const FarmerLogin: React.FC = () => {
                 Password
               </label>
               <input
+                onChange={(e)=>setpassword(e.target.value)}
                 type="password"
                 name="password"
                 id="password"
