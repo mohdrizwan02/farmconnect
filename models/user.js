@@ -1,18 +1,18 @@
 import mongoose, { Document, Schema } from 'mongoose';
-const userSchema = new Schema({
-  userType: { type: String, required: true },
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  pinCode: { type: String, required: true },
-  address: { type: String },
-  district: { type: String, required: true },
-  city: { type: String, required: true },
-  state: { type: String, required: true },
-  taluka: { type: String, required: true },
-  aadhaarNumber: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  
-},{timestamps : true }
-);
-const user = models.user || mongoose.model('user',userSchema)
+const UserSchema = new mongoose.Schema({
+  userType: String,
+  name: String,
+  email: String,
+  pinCode: Number,
+  address: String,
+  district: String,
+  city: String,
+  state: String,
+  taluka: String,
+  aadhaarNumber: Number,
+  password:String,
+  phone:String,
+},{timestamps:true});
+
+ const user = mongoose.models.user || mongoose.model('user', UserSchema);
 export default user;

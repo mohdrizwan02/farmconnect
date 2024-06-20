@@ -2,7 +2,7 @@
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import React, { ChangeEvent, useState } from 'react'
 import Image from 'next/image';
-
+import { useRouter } from "next/navigation";
 const Register = () => {
   const [otp, setOtp] = useState('');
   const [phone, setPhone] = useState('');
@@ -21,6 +21,8 @@ const Register = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [password,setpassword] = useState('');
   const [cpassword,setcpassword] = useState('');
+  const [derror,setderror] = useState('');
+  const router = useRouter();
   const steps = [
     { title: "Mobile Verification", description: "Requires OTP",src:'/done.png' },
     { title: "Basic Details & Identity", description: "Name,address,aadhaar etc",src:'/pending.png' },
@@ -42,6 +44,25 @@ const Register = () => {
     setOtp('');
     setOtpSent(false);
   };
+  const reverifyMobile=()=> {
+    setOtpVerified(false);
+    setOtpSent(false);
+    setderror('');
+    setOtp('');
+    setUserType('');
+    setName('');
+    setEmail('');
+    setPincode('');
+    setAddress('');
+    setDistrict('');
+    setCity('');
+    setState('');
+    setTaluka('');
+    setaadhaarnumber('');
+    
+    setpassword('');
+    setcpassword('');
+  }
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -57,10 +78,25 @@ const Register = () => {
       taluka,
       aadhaarnumber,
       password,
+      phone,
       
     };
     
     try {
+      const res= await fetch('/api/userexists',{
+        method :'POST',
+        headers: {
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify({phone}),
+    });
+    const userfound = await res.json();
+    
+      if(userfound){
+        setderror('user with this phone number already exists');
+         console.log(derror);
+         return;
+      }
       const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
@@ -68,8 +104,13 @@ const Register = () => {
         },
         body: JSON.stringify(formData),
       });
+      
 
       const result = await response.json();
+      if(response.ok){
+        router.push("./login");
+        
+      }
       console.log('Success:', result);
       
     } catch (error) {
@@ -79,6 +120,8 @@ const Register = () => {
   
  
   };
+ 
+
 return (
     <>
       {!otpVerified ? (
@@ -206,6 +249,7 @@ return (
                             value="Farmer"
                             onChange={(e) => setUserType(e.target.value)}
                             className="ml-2"
+                            required
                           />
                         </label>
                         <label className="flex items-center cursor-pointer">
@@ -217,6 +261,7 @@ return (
                             value="Trader"
                             onChange={(e) => setUserType(e.target.value)}
                             className="ml-2"
+                            required
                           />
                         </label>
                       </div>
@@ -323,7 +368,7 @@ return (
                           name="password"
                           value={password}
                           onChange={(e) => setpassword(e.target.value)}
-                          placeholder="Your Aadhaar Number"
+                          placeholder="Password"
                           className="w-full p-2 border border-zinc-300 rounded-lg"
                           required
                         />
@@ -331,11 +376,11 @@ return (
                       <div>
                         <label className="block text-zinc-700">Confirm Password*</label>
                         <input
-                          type="password"
-                          name="password"
+                          type="cpassword"
+                          name="cpassword"
                           value={cpassword}
                           onChange={(e) => setcpassword(e.target.value)}
-                          placeholder="Your Aadhaar Number"
+                          placeholder="Confirm Password"
                           className="w-full p-2 border border-zinc-300 rounded-lg"
                           required
                         />
@@ -355,17 +400,29 @@ return (
                         />
                       </div>
                       
-                      <div className='flex justify-center'>
+                      <div className='flex justify-around'>
                         <button
                           type="submit"
                           className="bg-black text-white  px-4 mt-5 py-2 rounded-lg hover:bg-green-500"
                         >
                           Continue
                         </button>
+                        <button
+                            onClick={reverifyMobile}
+                            className="bg-red-600 text-white  px-4 mt-5 py-2 rounded-lg hover:bg-green-500"
+                          >
+                            Use Diferent Mobile No
+                          </button>
                       </div>
                     </form>
+                    
                   </div>
-                 
+                  {derror && (
+                      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-2 rounded" role="alert">
+                        <strong className="font-bold">Error:</strong>
+                        <span className="block sm:inline pl-2">{derror}</span>
+                      </div>
+                    )}
                 
               </div>
             </div>
